@@ -1,0 +1,134 @@
+
+;;; package --- Summary
+;;; Code:
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(cua-mode t nil (cua-base))
+ '(diff-switches "-u")
+ '(inhibit-startup-screen t)
+;; '(package-selected-packages (quote (flycheck use-package)))
+ '(vhdl-inline-comment-column 80))
+
+; for emacs
+(setq-default tab-width 4)
+
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/"))
+(when (< emacs-major-version 24)
+   ;; For important compatibility libraries like cl-lib
+   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+(package-initialize)
+
+
+;;(use-package flycheck  :ensure t  :init (global-flycheck-mode))
+
+;;(flycheck-define-checker vhdl-tool
+;;  "A VHDL syntax checker, type checker and linter using VHDL-Tool.
+;;
+;;See URL `http://vhdltool.com'."
+;;  :command ("vhdl-tool" "client" "lint" "--compact" "--stdin" "-f" source
+;;            )
+;;  :standard-input t
+;;  :error-patterns
+;;  ((warning line-start (file-name) ":" line ":" column ":w:" (message) line-end)
+;;   (error line-start (file-name) ":" line ":" column ":e:" (message) line-end))
+;;  :modes (vhdl-mode))
+
+;;(add-to-list 'flycheck-checkers 'vhdl-tool)
+
+; it is important that this is before the other whitespace stuff, or it will have no effect
+(custom-set-faces
+ '(whitespace-tab ((t (:background "gray99" :foreground "gray99")))))
+(custom-set-faces
+ '(whitespace-space ((t (:background "white" :foreground "gray80")))))
+
+; load whitespace by default
+(require 'whitespace)
+(global-whitespace-mode 1)
+(setq-default whitespace-style '(lines-tail))
+(let ((whitespace-line-column 80) ;80 is the default
+ (whitespace-style '(lines-tail))) ;or '(lines) for the whole line
+ (whitespace-mode 1))
+
+;; # https://emacs.stackexchange.com/questions/147/how-can-i-get-a-ruler-at-column-80
+(set-face-attribute 'whitespace-line nil :background "gray95" :foreground 'unspecified)
+
+; make whitespace-mode use just basic coloring;
+;https://emacs.stackexchange.com/questions/22357/whitespace-mode-tab-mark-disturb-my-indentation?newreg=96fb3dc3d7354e67982b8edce0bad5ae
+; not using tab-mark because of this bug
+(setq whitespace-style (quote
+  ( spaces tabs newline space-mark newline-mark lines-tail face trailing empty)))
+;https://stackoverflow.com/questions/15946178/change-the-color-of-the-characters-in-whitespace-mode
+;(set-face-attribute 'space-mark nil :background "white" :foreground "gray80")
+; these are handled by custom-set-faces above!
+;(set-face-attribute 'tab-mark nil :background "gray80" :foreground "gray80")
+;(set-face-attribute 'spaces nil :background "gray80" :foreground "gray80")
+;(set-face-attribute 'whitespace-tab nil :background "white" :foreground "gray10")
+
+
+
+;; remove ^M's from display
+(defun remove-dos-eol ()
+  "Remove the disturbing '^M' showing up in files containing mixed UNIX and DOS line endings."
+  (interactive)
+  (setq buffer-display-table (make-display-table))
+  (aset buffer-display-table ?\^M []))
+
+(remove-dos-eol)
+
+(setq c-default-style "k&r"
+          c-basic-offset 4)
+
+(setq-default indent-tabs-mode nil)
+
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+
+;;(load "~/shurc.el")
+
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(cua-mode t nil (cua-base))
+ '(diff-switches "-u")
+ '(inhibit-startup-screen t)
+ '(printer-name "Canon-MX882"))
+
+
+;; load emacs 24's package system. Add MELPA repository.
+(when (>= emacs-major-version 24)
+  (require 'package)
+  (add-to-list
+   'package-archives
+   ;; '("melpa" . "http://stable.melpa.org/packages/") ; many packages won't show if using stable
+   '("melpa" . "http://melpa.milkbox.net/packages/")
+   t))
+
+
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
+
+
+
+;;; Commentary:
+
+
+(provide '.emacs)
+;;; .emacs ends here
+
+
+
