@@ -1,0 +1,3 @@
+#!/bin/bash
+# run git without top level
+env GIT_WORK_TREE=$HOME GIT_DIR=$HOME/.dotfiles git $@
