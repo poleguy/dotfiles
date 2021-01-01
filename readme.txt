@@ -7,7 +7,10 @@ alias git_dotfiles="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 
 git_dotfiles init --bare $HOME/.dotfiles
 git_dotfiles config --local status.showUntrackedFiles no
-git_dotfiles remote add origin https://github.com/poleguy/dotfiles.git
+git_dotfiles remote add origin git@github.com:poleguy/dotfiles.git
+#git_dotfiles remote add origin https://github.com/poleguy/dotfiles.git
+#git_dotfiles remote set-url origin git@github.com:poleguy/dotfiles.git
+
 git_dotfiles fetch
 git_dotfiles checkout master
 echo "*" >> .gitignore
