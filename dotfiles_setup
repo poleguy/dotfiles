@@ -22,5 +22,3 @@ if [ $? = 0 ]; then
 fi;
 git_dotfiles checkout master
 git_dotfiles config --local status.showUntrackedFiles no
-
-

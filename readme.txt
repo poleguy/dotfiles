@@ -9,9 +9,7 @@
 #./git_dotfiles is a command that works on the bare directory
 
 # to bootstrap a new machine:
-wget https://github.com/poleguy/dotfiles/blob/master/dotfiles_setup
-chmod ugo+x dotfiles_setup
-./dotfiles_setup
+curl -Lks https://raw.githubusercontent.com/poleguy/dotfiles/master/dotfiles_setup | /bin/bash
 
 
 # note, that gitignore includes everything, so anything new most be added explicitly
