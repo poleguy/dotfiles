@@ -4,7 +4,11 @@
 #alias git_dotfiles="env GIT_WORK_TREE=$HOME GIT_DIR=$HOME/.dotfiles git"
 #git_dotfiles checkout -m master dofiles_setup 
 
-alias git_dotfiles="env GIT_WORK_TREE=$HOME GIT_DIR=$HOME/.dotfiles git"
+function git_dotfiles {
+   env GIT_WORK_TREE=$HOME GIT_DIR=$HOME/.dotfiles git $@
+}
+
+git clone --bare git@github.com:poleguy/dotfiles.git $HOME/.dotfiles
 
 # this won't work without first removing pre-existing working files
 
@@ -14,7 +18,7 @@ if [ $? = 0 ]; then
   echo "Checked out config.";
   else
     echo "Backing up pre-existing dot files.";
-    git_dotfiles checkout 2>&1 | egrep "^\s+" | awk {'print $1'} | xargs -I{} mv {} .dotfiles-backup/{}
+    git_dotfiles checkout master 2>&1 | egrep "^\s+" | awk {'print $1'} | xargs -I{} mv {} .dotfiles-backup/{}
 fi;
 git_dotfiles checkout master
 git_dotfiles config --local status.showUntrackedFiles no
