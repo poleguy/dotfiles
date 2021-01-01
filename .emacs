@@ -9,7 +9,9 @@
  '(cua-mode t nil (cua-base))
  '(diff-switches "-u")
  '(inhibit-startup-screen t)
-;; '(package-selected-packages (quote (flycheck use-package)))
+ '(package-selected-packages (quote (lsp-mode use-package)))
+ '(printer-name "Canon-MX882")
+ ;; '(package-selected-packages (quote (flycheck use-package)))
  '(vhdl-inline-comment-column 80))
 
 ; for emacs
@@ -22,6 +24,26 @@
    ;; For important compatibility libraries like cl-lib
    (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
+
+;# https://jwiegley.github.io/use-package/installation/
+;Once you have added your preferred archive, you need to update the local package list using:
+;M-x package-refresh-contents RET
+;Once you have done that, you can install use-package and its dependencies using:
+;M-x package-install RET use-package RET
+
+(require 'use-package)
+;(setq lsp-vhdl-server-path "/usr/local/bin/vhdl-tool")
+(setq lsp-vhdl-server-path "/home/poleguy/fpga-data/2020/ADX5_AGC/Sweep/cenv/bin/hdl_checker")
+; https://pypi.org/project/hdl-checker/
+(custom-set-variables
+  '(lsp-vhdl-server 'hdl-checker))
+
+
+(use-package lsp-mode
+         :config
+         (add-hook 'vhdl-mode-hook 'lsp))
+
+
 
 
 ;;(use-package flycheck  :ensure t  :init (global-flycheck-mode))
@@ -42,9 +64,16 @@
 
 ; it is important that this is before the other whitespace stuff, or it will have no effect
 (custom-set-faces
- '(whitespace-tab ((t (:background "gray99" :foreground "gray99")))))
-(custom-set-faces
- '(whitespace-space ((t (:background "white" :foreground "gray80")))))
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(whitespace-space ((t (:background "white" :foreground "gray80"))))
+ '(whitespace-tab ((t (:background "gray95" :foreground "gray95"))))
+ '(whitespace-trailing ((t (:background "gray97" :foreground "gray50")))))
+
+
+
 
 ; load whitespace by default
 (require 'whitespace)
@@ -90,15 +119,7 @@
 ;;(load "~/shurc.el")
 
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(cua-mode t nil (cua-base))
- '(diff-switches "-u")
- '(inhibit-startup-screen t)
- '(printer-name "Canon-MX882"))
+
 
 
 ;; load emacs 24's package system. Add MELPA repository.
@@ -111,15 +132,15 @@
    t))
 
 
-(require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+;(require 'web-mode)
+;(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+;(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+;(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+;(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+;(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+;(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+;(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+;(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
 
 
