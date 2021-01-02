@@ -1,0 +1,15 @@
+
+# https://stackoverflow.com/questions/34119866/setting-up-and-using-meld-as-your-git-difftool-and-mergetool
+# Add the following to your .gitconfig file.
+[diff]
+    tool = meld
+[difftool]
+    prompt = false
+[difftool "meld"]
+    cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
+
+
+#Thanks, that's so much easier to use [mergetool "meld"] cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED" in ~/.gitconfig, then just resolve the conflicts highlighted in red in the middle pan and save! 
+[user]
+	name = Nick Dietz
+	email = dietz_nick@shure.com
