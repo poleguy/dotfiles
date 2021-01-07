@@ -9,7 +9,11 @@
     cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
 
 
-#Thanks, that's so much easier to use [mergetool "meld"] cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED" in ~/.gitconfig, then just resolve the conflicts highlighted in red in the middle pan and save! 
+# just resolve the conflicts highlighted in red in the middle pan and save! 
+
+# https://stackoverflow.com/questions/4220416/can-i-specify-multiple-users-for-myself-in-gitconfig
 [user]
-	name = Nick Dietz
-	email = dietz_nick@shure.com
+	#name = Nick Dietz
+	#email = dietz_nick@shure.com
+	name = Nicholas Dietz
+	email = github@poleguy.com
