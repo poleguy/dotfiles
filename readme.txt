@@ -24,7 +24,11 @@ echo "*" >> .gitignore
 
 # check for updates
 ./git_dotfiles difftool
-meld .
+# the equivalent of 'meld .' is:
+./git_dotfiles difftool --dir-diff
+# or optionally...
+# https://stackoverflow.com/questions/34119866/setting-up-and-using-meld-as-your-git-difftool-and-mergetool
+
 #add updates
 ./git_dotfiles add -u
 ./git_dotfiles commit

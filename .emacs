@@ -33,7 +33,12 @@
 
 (require 'use-package)
 ;(setq lsp-vhdl-server-path "/usr/local/bin/vhdl-tool")
-(setq lsp-vhdl-server-path "/home/poleguy/fpga-data/2020/ADX5_AGC/Sweep/cenv/bin/hdl_checker")
+;(setq lsp-vhdl-server-path "/home/poleguy/fpga-data/2020/ADX5_AGC/Sweep/cenv/bin/hdl_checker")
+; to install:
+; conda activate base
+; pip install hdl_checker
+(setq lsp-vhdl-server-path "/opt/anaconda/anaconda3/bin/hdl_checker")
+
 ; https://pypi.org/project/hdl-checker/
 (custom-set-variables
   '(lsp-vhdl-server 'hdl-checker))
