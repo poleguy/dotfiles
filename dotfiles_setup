@@ -9,6 +9,8 @@ function git_dotfiles {
 }
 
 git clone --bare git@github.com:poleguy/dotfiles.git $HOME/.dotfiles
+# or if this errors out
+#git clone --bare https://github.com/poleguy/dotfiles.git $HOME/.dotfiles
 
 # this won't work without first removing pre-existing working files
 
