@@ -137,6 +137,9 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+#https://stackoverflow.com/questions/54429210/how-do-i-prevent-conda-from-activating-the-base-environment-by-default
+conda config --set auto_activate_base false
+
 # more from centos
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
