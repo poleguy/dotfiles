@@ -152,3 +152,8 @@ conda config --set auto_activate_base false
 
 # https://torsion.org/borgmatic/docs/how-to/set-up-backups/
 PATH="$PATH:/root/.local/bin"
+
+PATH=$PATH:$HOME/.local/bin:$HOME/data/bin:$HOME/Sync/bin
+
+export PATH
+export EDITOR=emacs
