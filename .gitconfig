@@ -13,7 +13,13 @@
 
 # https://stackoverflow.com/questions/4220416/can-i-specify-multiple-users-for-myself-in-gitconfig
 [user]
-	#name = Nick Dietz
-	#email = dietz_nick@shure.com
 	name = Nicholas Dietz
 	email = github@poleguy.com
+[credential]
+	helper = cache
+
+# https://utf9k.net/blog/conditional-gitconfig/
+[includeIf "gitdir:~/fpga-data"]
+	name = Nick Dietz
+	email = dietz_nick@shure.com
+

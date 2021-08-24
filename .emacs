@@ -18,11 +18,14 @@
 (setq-default tab-width 4)
 
 (require 'package)
+; https://emacs.stackexchange.com/questions/53683/melpa-failed-to-download-melpa
 (add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/"))
-(when (< emacs-major-version 24)
+             '("melpa" . "https://melpa.org/packages/") t)
+;(when (< emacs-major-version 24)
    ;; For important compatibility libraries like cl-lib
-   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+  ;;(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+;  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t))
+
 (package-initialize)
 
 ;# https://jwiegley.github.io/use-package/installation/
@@ -33,17 +36,27 @@
 
 (require 'use-package)
 ;(setq lsp-vhdl-server-path "/usr/local/bin/vhdl-tool")
-;(setq lsp-vhdl-server-path "/home/poleguy/fpga-data/2020/ADX5_AGC/Sweep/cenv/bin/hdl_checker")
+                                        ;(setq lsp-vhdl-server-path "/home/poleguy/fpga-data/2020/ADX5_AGC/Sweep/cenv/bin/hdl_checker")
+
 ; to install:
 ; conda activate base
 ; pip install hdl_checker
-(setq lsp-vhdl-server-path "/opt/anaconda/anaconda3/bin/hdl_checker")
+; https://melpa.org/#/getting-started
+; confirm url for melpa
+; m-x package-refresh-contents
+
+;
+;LSP :: The following servers support current file but do not have automatic installation configuration: lsp-vhdl
+; change this path to match the installed hdl_checker
+
+;(setq lsp-vhdl-server-path "/opt/anaconda/anaconda3/bin/hdl_checker")
+(setq lsp-vhdl-server-path "/home/poleguy/.local/bin/hdl_checker")
 
 ; https://pypi.org/project/hdl-checker/
 (custom-set-variables
   '(lsp-vhdl-server 'hdl-checker))
 
-
+; Cannot load lsp-mode
 (use-package lsp-mode
          :config
          (add-hook 'vhdl-mode-hook 'lsp))
@@ -128,13 +141,14 @@
 
 
 ;; load emacs 24's package system. Add MELPA repository.
-(when (>= emacs-major-version 24)
-  (require 'package)
-  (add-to-list
-   'package-archives
+;(when (>= emacs-major-version 24)
+;  (require 'package)
+;  (add-to-list
+;   'package-archives
    ;; '("melpa" . "http://stable.melpa.org/packages/") ; many packages won't show if using stable
-   '("melpa" . "http://melpa.milkbox.net/packages/")
-   t))
+   ;;   '("melpa" . "http://melpa.milkbox.net/packages/")   t)
+   ;;   '("melpa" . "http://melpa.milkbox.net/packages/")   t)
+;  )
 
 
 ;(require 'web-mode)
