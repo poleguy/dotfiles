@@ -53,8 +53,8 @@
 (setq lsp-vhdl-server-path "/home/poleguy/.local/bin/hdl_checker")
 
 ; https://pypi.org/project/hdl-checker/
-;(custom-set-variables
-;  '(lsp-vhdl-server 'hdl-checker))
+(custom-set-variables
+  '(lsp-vhdl-server 'hdl-checker))
 
 ; Cannot load lsp-mode
 (use-package lsp-mode
