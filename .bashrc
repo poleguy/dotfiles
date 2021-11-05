@@ -144,11 +144,12 @@ conda config --set auto_activate_base false
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
+## User specific aliases and functions
+
 # https://superuser.com/questions/52562/ssh-keychain-for-xfce
 #export $(gnome-keyring-daemon --daemonize --start)
 # doing it in gui
 #echo "bashrc"
-
 
 # https://torsion.org/borgmatic/docs/how-to/set-up-backups/
 PATH="$PATH:/root/.local/bin"
@@ -157,3 +158,6 @@ PATH=$PATH:$HOME/.local/bin:$HOME/data/bin:$HOME/Sync/bin
 
 export PATH
 export EDITOR=emacs
+
+#. "/home/poleguy/.acme.sh/acme.sh.env"
+

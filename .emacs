@@ -36,7 +36,7 @@
 
 (require 'use-package)
 ;(setq lsp-vhdl-server-path "/usr/local/bin/vhdl-tool")
-                                        ;(setq lsp-vhdl-server-path "/home/poleguy/fpga-data/2020/ADX5_AGC/Sweep/cenv/bin/hdl_checker")
+;(setq lsp-vhdl-server-path "/home/poleguy/fpga-data/2020/ADX5_AGC/Sweep/cenv/bin/hdl_checker")
 
 ; to install:
 ; conda activate base
@@ -53,16 +53,13 @@
 (setq lsp-vhdl-server-path "/home/poleguy/.local/bin/hdl_checker")
 
 ; https://pypi.org/project/hdl-checker/
-(custom-set-variables
-  '(lsp-vhdl-server 'hdl-checker))
+;(custom-set-variables
+;  '(lsp-vhdl-server 'hdl-checker))
 
 ; Cannot load lsp-mode
 (use-package lsp-mode
          :config
          (add-hook 'vhdl-mode-hook 'lsp))
-
-
-
 
 ;;(use-package flycheck  :ensure t  :init (global-flycheck-mode))
 
@@ -81,13 +78,20 @@
 ;;(add-to-list 'flycheck-checkers 'vhdl-tool)
 
 
+; # https://stackoverflow.com/questions/19201358/how-to-get-emacs-background-color
+; (face-attribute 'default :background)
+
+; set up colors for terminal and for gui conditionally
+; https://emacs.stackexchange.com/questions/2096/different-themes-for-terminal-and-graphical-frames-when-using-emacs-daemon
+
+
 ; it is important that this is before the other whitespace stuff, or it will have no effect
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(whitespace-space ( ( ((type tty) (min-colors 256))
+ '(whitespace-space ( ( ((type tty) (min-colors 256)) 
                         (:background "black" :foreground "gray80"))
                       (t
                        (:background "white" :foreground "gray80")))
@@ -96,9 +100,6 @@
  '(whitespace-trailing ((t (:background "gray97" :foreground "gray50"))))
  )
 	
-
-
-
 
 ; load whitespace by default
 (require 'whitespace)
