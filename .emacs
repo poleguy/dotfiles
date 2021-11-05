@@ -80,15 +80,22 @@
 
 ;;(add-to-list 'flycheck-checkers 'vhdl-tool)
 
+
 ; it is important that this is before the other whitespace stuff, or it will have no effect
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
+  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(whitespace-space ((t (:background "white" :foreground "gray80"))))
+ '(whitespace-space ( ( ((type tty) (min-colors 256))
+                        (:background "black" :foreground "gray80"))
+                      (t
+                       (:background "white" :foreground "gray80")))
+                    )
  '(whitespace-tab ((t (:background "gray95" :foreground "gray95"))))
- '(whitespace-trailing ((t (:background "gray97" :foreground "gray50")))))
+ '(whitespace-trailing ((t (:background "gray97" :foreground "gray50"))))
+ )
+	
 
 
 
@@ -161,7 +168,22 @@
 ;(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 ;(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
+(defun xah-replace-invisible-char ()
+  "Query replace some invisible Unicode chars.
+The chars to be searched are:
+ ZERO WIDTH NO-BREAK SPACE (65279, #xfeff)
+ ZERO WIDTH SPACE (codepoint 8203, #x200b)
+ RIGHT-TO-LEFT MARK (8207, #x200f)
+ RIGHT-TO-LEFT OVERRIDE (8238, #x202e)
+ LEFT-TO-RIGHT MARK ‎(8206, #x200e)
+ OBJECT REPLACEMENT CHARACTER (65532, #xfffc)
 
+Search begins at cursor position. (respects `narrow-to-region')
+
+URL `http://ergoemacs.org/emacs/elisp_unicode_replace_invisible_chars.html'
+Version 2018-09-07"
+  (interactive)
+  (query-replace-regexp "\ufeff\\|\u200b\\|\u200f\\|\u202e\\|\u200e\\|\ufffc" ""))
 
 
 ;;; Commentary:
