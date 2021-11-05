@@ -1,3 +1,4 @@
 #!/bin/bash
 # run git without top level
-env GIT_WORK_TREE=$HOME GIT_DIR=$HOME/.dotfiles git $@
+# https://stackoverflow.com/questions/10835933/preserve-quotes-in-bash-arguments
+env GIT_WORK_TREE=$HOME GIT_DIR=$HOME/.dotfiles git "$@"
