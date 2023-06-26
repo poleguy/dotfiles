@@ -161,4 +161,10 @@ export EDITOR=emacs
 #. "/home/poleguy/.acme.sh/acme.sh.env"
 
 
-source /home/poleguy/.bash_completions/run_ota_telem.py.sh
+#source /home/poleguy/.bash_completions/run_ota_telem.py.sh
+
+
+# fix for snap firefox
+#https://bugs.launchpad.net/ubuntu/+source/snapd/+bug/1951491
+unset DBUS_SESSION_BUS_ADDRESS
+
