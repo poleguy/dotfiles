@@ -1,6 +1,12 @@
 
 ;;; package --- Summary
 ;;; Code:
+
+; https://emacs.stackexchange.com/questions/2269/how-do-i-get-my-initial-frame-to-be-the-desired-size
+(when window-system
+  ;(set-frame-position (selected-frame) 0 0)
+  (set-frame-size (selected-frame) 131 53))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -9,9 +15,9 @@
  '(cua-mode t nil (cua-base))
  '(diff-switches "-u")
  '(inhibit-startup-screen t)
- '(package-selected-packages (quote (lsp-mode use-package)))
+; '(lsp-vhdl-server (quote hdl-checker))
+ '(package-selected-packages (quote (py-autopep8 vdiff lsp-mode use-package)))
  '(printer-name "Canon-MX882")
- ;; '(package-selected-packages (quote (flycheck use-package)))
  '(vhdl-inline-comment-column 80))
 
 ; for emacs
@@ -50,16 +56,16 @@
 ; change this path to match the installed hdl_checker
 
 ;(setq lsp-vhdl-server-path "/opt/anaconda/anaconda3/bin/hdl_checker")
-(setq lsp-vhdl-server-path "/home/poleguy/.local/bin/hdl_checker")
+;(setq lsp-vhdl-server-path "/home/poleguy/.local/bin/hdl_checker")
 
 ; https://pypi.org/project/hdl-checker/
-(custom-set-variables
-  '(lsp-vhdl-server 'hdl-checker))
+;(custom-set-variables
+;  '(lsp-vhdl-server 'hdl-checker))
 
 ; Cannot load lsp-mode
-(use-package lsp-mode
-         :config
-         (add-hook 'vhdl-mode-hook 'lsp))
+;(use-package lsp-mode
+;         :config
+;         (add-hook 'vhdl-mode-hook 'lsp))
 
 ;;(use-package flycheck  :ensure t  :init (global-flycheck-mode))
 
@@ -87,18 +93,13 @@
 
 ; it is important that this is before the other whitespace stuff, or it will have no effect
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
+ ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(whitespace-space ( ( ((type tty) (min-colors 256)) 
-                        (:background "black" :foreground "gray80"))
-                      (t
-                       (:background "white" :foreground "gray80")))
-                    )
+ '(whitespace-space ((((type tty) (min-colors 256)) (:background "black" :foreground "gray80")) (t (:background "white" :foreground "gray80"))))
  '(whitespace-tab ((t (:background "gray95" :foreground "gray95"))))
- '(whitespace-trailing ((t (:background "gray97" :foreground "gray50"))))
- )
+ '(whitespace-trailing ((t (:background "gray97" :foreground "gray50")))))
 	
 
 ; load whitespace by default

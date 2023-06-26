@@ -152,12 +152,13 @@ conda config --set auto_activate_base false
 #echo "bashrc"
 
 # https://torsion.org/borgmatic/docs/how-to/set-up-backups/
-PATH="$PATH:/root/.local/bin"
-
-PATH=$PATH:$HOME/.local/bin:$HOME/data/bin:$HOME/Sync/bin
+#PATH="$PATH:/root/.local/bin"
+PATH=$PATH:$HOME/.local/bin
 
 export PATH
 export EDITOR=emacs
 
 #. "/home/poleguy/.acme.sh/acme.sh.env"
 
+
+source /home/poleguy/.bash_completions/run_ota_telem.py.sh

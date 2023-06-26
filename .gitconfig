@@ -5,8 +5,8 @@
     tool = meld
 [difftool]
     prompt = false
-[difftool "meld"]
-    cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
+#[difftool "meld"]
+#    cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
 
 
 # just resolve the conflicts highlighted in red in the middle pan and save! 
