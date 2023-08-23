@@ -16,10 +16,22 @@
 	name = Nicholas Dietz
 	email = github@poleguy.com
 [credential]
-	helper = cache
+	helper = store
+[push]
+	default = simple
+	# why:
+	# https://git-scm.com/docs/git-config
+	# This mode is the default since Git 2.0, and is the safest option suited for beginners.
+
 
 # https://utf9k.net/blog/conditional-gitconfig/
-[includeIf "gitdir:~/fpga-data"]
+# try to determine user by home directory username
+[includeIf "gitdir:dietzn/**"]
 	name = Nick Dietz
 	email = dietz_nick@shure.com
+
+# https://stackoverflow.com/questions/72078027/git-user-depending-on-remote-url
+# we're at git 2.34.1, so this isn't an option:
+#[includeIf hasconfig:remote.*.url:**bitbucket.shure.com/**"]
+
 
