@@ -1,6 +1,8 @@
-
 ;;; package --- Summary
 ;;; Code:
+
+; https://www.emacswiki.org/emacs/ExampleConfigurations
+; see readme.txt for dotfile management
 
 ; https://emacs.stackexchange.com/questions/2269/how-do-i-get-my-initial-frame-to-be-the-desired-size
 (when window-system
@@ -16,7 +18,9 @@
  '(diff-switches "-u")
  '(inhibit-startup-screen t)
 ; '(lsp-vhdl-server (quote hdl-checker))
- '(package-selected-packages (quote (py-autopep8 vdiff lsp-mode use-package)))
+; https://emacs.stackexchange.com/questions/59084/package-selected-packages-what-is-it-useful-for
+; '(package-selected-packages (quote (py-autopep8 vdiff lsp-mode use-package)))
+; '(package-selected-packages '(markdown-mode))
  '(printer-name "Canon-MX882")
  '(vhdl-inline-comment-column 80))
 
@@ -40,7 +44,8 @@
 ;Once you have done that, you can install use-package and its dependencies using:
 ;M-x package-install RET use-package RET
 
-(require 'use-package)
+; https://emacs.stackexchange.com/questions/65064/what-is-the-difference-purpose-between-require-and-package-install
+;(require 'use-package)
 ;(setq lsp-vhdl-server-path "/usr/local/bin/vhdl-tool")
 ;(setq lsp-vhdl-server-path "/home/poleguy/fpga-data/2020/ADX5_AGC/Sweep/cenv/bin/hdl_checker")
 
@@ -97,10 +102,16 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(whitespace-space ((((type tty) (min-colors 256)) (:background "black" :foreground "gray80")) (t (:background "white" :foreground "gray80"))))
+ ;;
+ ;; first entry is for tty for spaces second entry works in gui
+ ; don't use white background on tty
+ '(whitespace-space ((((type tty) (min-colors 256)) (:foreground "gray30")) (t (:background "white" :foreground "gray80"))))
  '(whitespace-tab ((t (:background "gray95" :foreground "gray95"))))
- '(whitespace-trailing ((t (:background "gray97" :foreground "gray50")))))
+ '(whitespace-tab ((((type tty) (min-colors 256)) (:background "gray20" :foreground "gray20")) (t (:background "gray05" :foreground "gray05"))))
+; '(whitespace-tab ((t (:background "gray95" :foreground "gray95"))))
+	 '(whitespace-trailing ((t (:background "gray97" :foreground "gray50")))))
 	
+
 
 ; load whitespace by default
 (require 'whitespace)
