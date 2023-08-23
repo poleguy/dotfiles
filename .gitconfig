@@ -17,8 +17,8 @@
 	email = github@poleguy.com
 [credential]
 	helper = store
-[push]
-	default = simple
+#[push]
+#	default = simple
 	# why:
 	# https://git-scm.com/docs/git-config
 	# This mode is the default since Git 2.0, and is the safest option suited for beginners.
