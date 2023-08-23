@@ -4,6 +4,9 @@
 #alias git_dotfiles="env GIT_WORK_TREE=$HOME GIT_DIR=$HOME/.dotfiles git"
 #git_dotfiles checkout -m master dofiles_setup 
 
+# stop on error
+set -e
+
 function git_dotfiles {
    env GIT_WORK_TREE=$HOME GIT_DIR=$HOME/.dotfiles git $@
 }

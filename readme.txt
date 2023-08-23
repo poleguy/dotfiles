@@ -7,6 +7,10 @@
 # alias git_dotfiles="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 # 
 #./git_dotfiles is a command that works on the bare directory
+#
+# https://www.atlassian.com/git/tutorials/dotfiles
+# the gotcha is that you won't have remote tracking branches so you need to git push origin
+
 
 # to bootstrap a new machine:
 curl -Lks https://raw.githubusercontent.com/poleguy/dotfiles/master/dotfiles_setup | /bin/bash
@@ -40,3 +44,10 @@ echo "*" >> .gitignore
 #git clone https://github.com/poleguy/dotfiles.git
 #cd dotfiles
 #./setup
+
+#  set remote
+# ./git_dotfiles remote set-url origin git@github.com:poleguy/dotfiles.git
+
+#  set remote via ssh if necessary
+# https://docs.github.com/en/authentication/troubleshooting-ssh/using-ssh-over-the-https-port
+# /git_dotfiles remote set-url origin ssh://git@github.com:443/poleguy/dotfiles.git
