@@ -18,8 +18,11 @@ git clone --bare git@github.com:poleguy/dotfiles.git $HOME/.dotfiles
 # this won't work without first removing pre-existing working files
 
 mkdir -p .dotfiles-backup
-git_dotfiles checkout master
-if [ $? = 0 ]; then
+set +e
+git_dotfiles checkout master >& /dev/null 
+RESULT=$?
+set -e
+if [ $RESULT = 0 ]; then
   echo "Checked out config.";
   else
     echo "Backing up pre-existing dot files.";
@@ -28,5 +31,8 @@ fi;
 git_dotfiles checkout master
 git_dotfiles config --local status.showUntrackedFiles no
 
-conda activate base
-pip install hdl_checker
+# this belongs in classical repo
+#conda activate base
+#pip install hdl_checker
+
+echo "dotfiles installed. to reinstall, rm -rf .dotfiles and re-run"
